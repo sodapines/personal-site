@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="sodapines is a quiet home base for writing, updates, and small experiments by kzen."
+    />
+    <title>sodapines</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- top navigation -->
+    <header class="site-header">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="site-name" href="#home">sodapines</a>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#blog">Blog</a>
+          <a href="#contact">Contact</a>
+          <button class="theme-toggle" type="button" aria-label="Toggle theme">
+            <span aria-hidden="true">◐</span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- home section -->
+      <section class="hero section" id="home">
+        <div class="hero-text">
+          <p class="eyebrow">kzen</p>
+          <h1>hi, welcome to my website!</h1>
+          <p class="hero-copy">
+            I use this place to keep track of writing, updates, and things I’m
+            learning about data, software, and internet culture.
+          </p>
+          <div class="button-row" aria-label="Primary actions">
+            <a class="button primary" href="#blog">Read blog</a>
+            <a class="button secondary" href="#contact">Contact</a>
+          </div>
+        </div>
+
+        <div class="hero-aside">
+          <figure class="avatar-card">
+            <img
+              src="assets/gumi.jpg"
+              alt="kzen avatar"
+              width="320"
+              height="320"
+            />
+            <figcaption>it's gumi from water the roses!</figcaption>
+          </figure>
+
+          <aside class="status-card" aria-label="Current status">
+            <h2>Status</h2>
+            <dl>
+              <div>
+                <dt>Currently</dt>
+                <dd>building better ways to organize creative data</dd>
+              </div>
+              <div>
+                <dt>Learning</dt>
+                <dd>AI, data science, and web development</dd>
+              </div>
+              <div>
+                <dt>Interested in</dt>
+                <dd>
+                  archives, interfaces, music technology, and digital
+                  preservation
+                </dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+      </section>
+
+      <!-- about section -->
+      <section class="section" id="about">
+        <div class="section-heading">
+          <h2>About me</h2>
+        </div>
+        <div class="text-panel">
+          <div class="about-copy">
+            <p>
+              I’m interested in AI, data science, software, and digital
+              preservation. I like building systems that make messy information
+              easier to understand.
+            </p>
+            <p>
+              I care about preserving internet culture and making obscure
+              information easier to find. The work I enjoy most combines
+              technical work with creative communities, especially when the
+              result helps people notice patterns, history, or context that
+              might otherwise disappear.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- blog section -->
+      <section class="section" id="blog">
+        <div class="section-heading">
+          <h2>Blog</h2>
+        </div>
+        <div class="blog-panel">
+          <p class="blog-intro">
+            This will be a place for longer notes, updates, and things I’m
+            thinking through.
+          </p>
+
+          <div class="blog-index" aria-label="Blog posts">
+          </div>
+
+          <article class="blog-post">
+            <time datetime="2026-04-30">April 30, 2026</time>
+            <h3>Introduction</h3>
+            <p>
+              So, I decided to finally turn the sodapines.dev domain into a
+              proper website you can visit. I'm not sure whether I will keep
+              this design as is. Otherwise, I really like it so far.
+            </p>
+            <p>
+              Anyway, I had my district senior luncheon today. Honestly, I
+              didn't really like it. There was something off about these guys,
+              especially the superintendent. If there is one thing that makes me
+              happy, it's that I won't have to see any of these guys again in
+              the future. Though, there is a speech that I will have to give
+              during graduation. I talked with the principal and my teacher
+              invitee. I sent my draft to the principal and let my teacher read
+              the draft. She really liked it, so I will probably keep it as is.
+            </p>
+            <p>
+              Anyway, that is the end of my first blog on this website. I'll try
+              and keep it updated and stuff, considering it will be on my GitHub
+              page.
+            </p>
+          </article>
+
+          <!--
+            this is a template for me to use in the future
+
+            <article class="blog-post">
+              <time datetime="2026-04-30">April 30, 2026</time>
+              <h3>Post title</h3>
+              <p>Post preview or full post text goes here.</p>
+            </article>
+          -->
+        </div>
+      </section>
+
+      <!-- contact section -->
+      <section class="section contact-section" id="contact">
+        <div class="section-heading">
+          <h2>Contact</h2>
+        </div>
+        <div class="contact-card">
+          <p>
+            Email is the best place to reach me. GitHub is there for code and
+            public stuff.
+          </p>
+          <div class="contact-links">
+            <a href="mailto:kzen@sodapines.dev">kzen@sodapines.dev</a>
+            <a href="#" aria-label="GitHub placeholder">GitHub: sodapines</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Built quietly at sodapines.dev</p>
+      <p>© 2026 kzen</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
