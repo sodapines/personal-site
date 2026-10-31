@@ -10,7 +10,9 @@ A small personal website for kzen / sodapines, built with [Astro](https://astro.
 
 ## Writing a post
 
-Add a Markdown file to `src/content/blog/`:
+The easy way: open [Pages CMS](https://app.pagescms.org), pick this repository, and write the post there. Saving commits it to `main`, which deploys the site.
+
+To do it by hand, add a Markdown file to `src/content/blog/`:
 
 ```md
 ---
