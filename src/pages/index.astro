@@ -1,0 +1,162 @@
+---
+import { getCollection } from "astro:content";
+import Sidebar from "../components/Sidebar.astro";
+import SodaPines from "../components/SodaPines.astro";
+import Base from "../layouts/Base.astro";
+
+const posts = await getCollection("blog");
+posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const likes = ["osu!catch and osu!mania", "cookie dough ice cream", "silk pillowsheets"];
+
+const projects = [
+  {
+    title: "Vocal Synthesis Collaboration Network",
+    url: "https://sodapines.github.io/vocasynth-network/",
+    date: "Oct 2026 – now",
+    about:
+      "Network analysis of 8,716 creators and 35,480 collaboration ties across 14,631 songs from VocaDB. Repeat collaborations happen at about 22× the randomized baseline.",
+    stack: "Python, SQLite, NetworkX, igraph",
+  },
+  {
+    title: "Music Analytics & Archival Platform",
+    url: "https://vocaloidle.sodapines.dev/39charts/?src=nnd",
+    date: "Jun 2026 – now",
+    about:
+      "Archive of daily view counts for 2,000+ songs across YouTube, Niconico, and bilibili, with per-song profiles and cross-platform comparison.",
+    stack: "HTML, CSS, JavaScript, Cloudflare Workers",
+  },
+  {
+    title: "Music Trivia & Puzzle Platform",
+    url: "https://vocaloidle.sodapines.dev/",
+    date: "May 2026 – now",
+    about:
+      "Five daily games (Heardle, Higher/Lower, Connections, Timeline, Grid) with 8,900+ visitors since June 2026.",
+    stack: "HTML, CSS, JavaScript, Cloudflare Workers, R2, KV",
+  },
+];
+
+const favorites = [
+  { url: "https://www.youtube.com/watch?v=shs0rAiwsGQ", song: "Senbonzakura", producer: "Kurousa", vocal: "Hatsune Miku" },
+  { url: "https://www.youtube.com/watch?v=sSYoz0JmnZo", song: "Electric Angel (Giga ver.)", producer: "Giga", vocal: "Kagamine Rin, Kagamine Len" },
+  { url: "https://www.youtube.com/watch?v=o1iz4L-5zkQ", song: "Kimagure Mercy", producer: "Hachioji-P", vocal: "Hatsune Miku" },
+  { url: "https://www.youtube.com/watch?v=B6vKLsh09Qw", song: "Saji no Majinai", producer: "r-906", vocal: "Hatsune Miku" },
+  { url: "https://www.youtube.com/watch?v=EfghN2SBAHQ", song: "Villainous Self-Riser", producer: "Jesus-P", vocal: "Kagamine Len" },
+];
+
+const buttonCode =
+  '<a href="https://sodapines.dev"><img src="https://sodapines.dev/buttons/sodapines.svg" alt="sodapines" width="88" height="31"></a>';
+
+---
+
+<Base>
+  <div class="columns">
+    <Sidebar />
+
+    <div class="feed">
+      <section class="box hello">
+        <div class="hello-text">
+          <h1>hi, welcome to my website!</h1>
+          <p>
+            I got into VOCALOID through rhythm games, mostly through nostalgia. I care about this kind
+            of stuff because it's a special kind of internet culture where humans can have a lot of
+            control. It's like a special form of art.
+          </p>
+          <p>
+            The nerdiest thing I've done is definitely memorizing the Top 200 most viewed songs. But
+            I'm just a human person, and I too like other things outside of Vocaloid.
+          </p>
+        </div>
+        <div class="hello-art"><SodaPines /></div>
+      </section>
+
+      <section class="box">
+        <h2 class="box-title">[ projects ] <span>{projects.length} total</span></h2>
+        {
+          projects.map((project) => (
+            <article class="project">
+              <h3>
+                <a href={project.url}>{project.title}</a> <span>{project.date}</span>
+              </h3>
+              <p>{project.about}</p>
+              <p class="stack">{project.stack}</p>
+            </article>
+          ))
+        }
+      </section>
+
+      <div class="pair">
+        <div class="stack">
+      <section class="box">
+        <h2 class="box-title">[ posts ] <a href="/blog/">all {posts.length} &gt;</a></h2>
+        <table class="post-table">
+          <thead>
+            <tr><th>Date</th><th>Title</th></tr>
+          </thead>
+          <tbody>
+            {
+              posts.slice(0, 5).map((post) => (
+                <tr>
+                  <td class="date">
+                    <time datetime={post.data.date.toISOString()}>
+                      {post.data.date.toISOString().slice(0, 10)}
+                    </time>
+                  </td>
+                  <td>
+                    <a href={`/blog/${post.id}/`}>
+                      {post.data.title}
+                    </a>
+                  </td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </section>
+
+          <section class="box">
+            <h2 class="box-title">[ things i like right now ]</h2>
+            <ul class="plain-list">{likes.map((like) => <li>{like}</li>)}</ul>
+          </section>
+
+          {/* buttons box, shelved until the friend buttons arrive
+          <section class="box">
+            <h2 class="box-title">[ buttons ]</h2>
+            <div class="buttons">
+              <a href="/"><img src="/buttons/sodapines.svg" alt="sodapines" width="88" height="31" /></a>
+              <a href="https://vocaloidle.sodapines.dev/"><img src="/buttons/vocaloidle.svg" alt="vocaloidle" width="88" height="31" /></a>
+            </div>
+            <label class="link-me">
+              link to me!
+              <textarea readonly rows="2" onclick="this.select()">(buttonCode)</textarea>
+            </label>
+          </section>
+          */}
+        </div>
+
+        <section class="box">
+          <h2 class="box-title">[ my top 5 vocaloid songs ]</h2>
+          <table class="post-table songs-table">
+            <thead>
+              <tr><th>#</th><th>Song</th><th>Producer</th><th class="vocal">Vocal</th></tr>
+            </thead>
+            <tbody>
+              {
+                favorites.map((favorite, index) => (
+                  <tr>
+                    <td class="rank">{index + 1}</td>
+                    <td>
+                      <a href={favorite.url}>{favorite.song}</a>
+                    </td>
+                    <td>{favorite.producer}</td>
+                    <td class="vocal">{favorite.vocal}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+  </div>
+</Base>

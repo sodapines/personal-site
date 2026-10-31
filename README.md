@@ -1,16 +1,34 @@
 # sodapines.dev
 
-A small personal website for kzen / sodapines.
+A small personal website for kzen / sodapines, built with [Astro](https://astro.build).
 
-Built with plain HTML, CSS, and a little JavaScript.
+## Running it
+
+- `npm install` - install dependencies
+- `npm run dev` - start a local preview at http://localhost:4321
+- `npm run build` - build the site into `dist/`
+
+## Writing a post
+
+Add a Markdown file to `src/content/blog/`:
+
+```md
+---
+title: Post title
+date: 2026-04-30
+---
+
+Post text goes here.
+```
+
+The filename becomes the URL, so `my-post.md` lives at `/blog/my-post/`.
 
 ## Files
 
-- `index.html` - main page content
-- `styles.css` - site styling
-- `script.js` - theme toggle
-- `assets/` - images and other media
+- `src/pages/` - one file per page
+- `src/layouts/Base.astro` - shared header, footer, and theme toggle
+- `src/components/SodaPines.astro` - the home page illustration
+- `src/styles/global.css` - site styling
+- `public/` - images and other files served as they are
 
-## Notes
-
-This site is intentionally simple and can be opened directly in a browser.
+Pushing to `main` deploys the site through GitHub Actions.

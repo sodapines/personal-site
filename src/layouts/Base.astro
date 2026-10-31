@@ -1,0 +1,72 @@
+---
+import "@fontsource-variable/newsreader";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "sodapines is a quiet home base for writing, updates, and small experiments by kzen.",
+} = Astro.props;
+const path = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={new URL(path, Astro.site)} />
+    <title>{title ? `${title} · sodapines` : "sodapines"}</title>
+    <script is:inline>
+      // runs before paint so dark mode never flashes
+      var saved = localStorage.getItem("sodapines-theme");
+      var prefersDark = matchMedia("(prefers-color-scheme: dark)").matches;
+      if (saved === "dark" || (!saved && prefersDark)) {
+        document.documentElement.dataset.theme = "dark";
+      }
+    </script>
+  </head>
+  <body>
+    <div class="topbar">
+      <span>sodapines.dev{path === "/" ? "" : path.replace(/\/$/, "").replaceAll("/", " > ")}</span>
+      <span>kzen's corner of the internet</span>
+    </div>
+    <header class="masthead">
+      <a class="site-name" href="/">sodapines</a>
+      <nav aria-label="Main navigation">
+        <a href="/" aria-current={path === "/" ? "page" : undefined}>Home</a>
+        <a href="/blog/" aria-current={path.startsWith("/blog") ? "page" : undefined}>Blog</a>
+        <button class="theme-toggle" type="button" aria-label="Toggle theme">◐</button>
+      </nav>
+    </header>
+
+    <div class="marquee" aria-hidden="true">
+      <p>~ welcome to my website! feel free to explore around and check out my projects and playlist ~</p>
+    </div>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <p>So you found sodapines.dev...</p>
+        <p>© {new Date().getFullYear()} kzen</p>
+      </div>
+    </footer>
+
+    <script>
+      const root = document.documentElement;
+      document.querySelector(".theme-toggle")?.addEventListener("click", () => {
+        const next = root.dataset.theme === "dark" ? "light" : "dark";
+        root.dataset.theme = next;
+        localStorage.setItem("sodapines-theme", next);
+      });
+    </script>
+  </body>
+</html>

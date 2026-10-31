@@ -1,0 +1,34 @@
+---
+const interests = ["archives", "interfaces", "music technology", "digital preservation"];
+---
+
+<aside class="side">
+  <figure class="box portrait">
+    <img src="/gumi.jpg" alt="Gumi from Water the Roses" width="500" height="500" />
+    <figcaption>it's gumi from water the roses!</figcaption>
+  </figure>
+
+  <section class="box">
+    <h2 class="box-title">[ status ]</h2>
+    <dl class="rows">
+      <dt>Currently</dt>
+      <dd>building better ways to organize creative data</dd>
+      <dt>Learning</dt>
+      <dd>AI, data science, and web development</dd>
+    </dl>
+  </section>
+
+  <section class="box">
+    <h2 class="box-title">[ interested in ]</h2>
+    <ul class="plain-list">{interests.map((interest) => <li>{interest}</li>)}</ul>
+  </section>
+
+  <section class="box">
+    <h2 class="box-title">[ contact ]</h2>
+    <p class="box-body">Email is the best place to reach me. GitHub is there for code and public stuff.</p>
+    <ul class="plain-list">
+      <li><a href="mailto:kzen@sodapines.dev">kzen@sodapines.dev</a></li>
+      <li><a href="https://github.com/sodapines">github: sodapines</a></li>
+    </ul>
+  </section>
+</aside>

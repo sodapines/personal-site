@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="88" height="31" viewBox="0 0 88 31" shape-rendering="crispEdges">
+  <rect width="88" height="31" fill="#27402a"/>
+  <path d="M0 0h88v1H1v30H0z" fill="#a9c196"/>
+  <path d="M88 31H0v-1h87V0h1z" fill="#0f1a10"/>
+  <path d="M13 4l5 8h-3l4 6h-3l5 8H5l5-8H7l4-6H8z" fill="#a9c196"/>
+  <circle cx="23" cy="7" r="1.5" fill="none" stroke="#d0a47f"/>
+  <text x="28" y="19" font-family="Courier New, monospace" font-size="10" font-weight="700" fill="#fbfaf3" textLength="56" lengthAdjust="spacingAndGlyphs">sodapines</text>
+</svg>

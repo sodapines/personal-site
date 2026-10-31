@@ -1,0 +1,51 @@
+---
+import { getCollection } from "astro:content";
+import Sidebar from "../../components/Sidebar.astro";
+import Base from "../../layouts/Base.astro";
+
+const posts = await getCollection("blog");
+posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const years = [...new Set(posts.map((post) => post.data.date.getUTCFullYear()))];
+
+// first bit of the post, cut at a word so the preview never ends mid-word
+function preview(body = "") {
+  const text = body.trim().split("\n")[0];
+  return text.length > 120 ? `${text.slice(0, 120).replace(/\s+\S*$/, "")}...` : text;
+}
+---
+
+<Base title="Blog">
+  <div class="columns">
+    <Sidebar />
+    <div class="feed">
+      <section class="box">
+        <h2 class="box-title">[ blog ] <span>{posts.length} total</span></h2>
+        <p class="box-body">
+          This will be a place for longer notes, updates, and things I’m thinking through.
+        </p>
+      </section>
+      {
+        years.map((year) => {
+          const yearPosts = posts.filter((post) => post.data.date.getUTCFullYear() === year);
+          return (
+            <section class="box">
+              <h2 class="box-title">
+                [ {year} ] <span>{yearPosts.length} posts</span>
+              </h2>
+              {yearPosts.map((post) => (
+                <article class="project">
+                  <h3>
+                    <a href={`/blog/${post.id}/`}>{post.data.title}</a>{" "}
+                    <span>{post.data.date.toISOString().slice(5, 10)}</span>
+                  </h3>
+                  <p>{preview(post.body)}</p>
+                </article>
+              ))}
+            </section>
+          );
+        })
+      }
+    </div>
+  </div>
+</Base>

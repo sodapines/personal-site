@@ -1,0 +1,23 @@
+{
+  "name": "sodapines",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sodapines/personal-site.git"
+  },
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/sodapines/personal-site/issues"
+  },
+  "homepage": "https://github.com/sodapines/personal-site#readme",
+  "private": true,
+  "dependencies": {
+    "@fontsource-variable/newsreader": "^5.3.0",
+    "astro": "^7.4.4"
+  }
+}
